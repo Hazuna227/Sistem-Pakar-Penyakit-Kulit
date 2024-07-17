@@ -57,11 +57,18 @@ nav ul li a:hover {
     display: block;
 }
 
+.table-wrapper {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid #dddddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
 table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     background-color: #fff;
 }
 
@@ -279,49 +286,57 @@ button[type="submit"]:hover {
 
         <div id="symptoms" class="section">
             <h2>Tabel Gejala</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Kode Gejala</th>
-                        <th>Nama Gejala</th>
-                    </tr>
-                </thead>
-                <tbody id="symptomsTableBody">
-                    <!-- Tabel Gejala muncul disini -->
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode Gejala</th>
+                            <th>Nama Gejala</th>
+                        </tr>
+                    </thead>
+                    <tbody id="symptomsTableBody">
+                        <!-- Tabel Gejala muncul disini -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="diagnoses" class="section">
             <h2>Tabel Penyakit</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Kode Penyakit</th>
-                        <th>Nama Penyakit</th>
-                    </tr>
-                </thead>
-                <tbody id="diagnosesTableBody">
-                    <!-- Tabel Kerusakan -->
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode Penyakit</th>
+                            <th>Nama Penyakit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="diagnosesTableBody">
+                        <!-- Tabel Kerusakan -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="rules" class="section">
             <h2>Aturan (Rules)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Aturan</th>
-                    </tr>
-                </thead>
-                <tbody id="rulesTableBody">
-                    <!-- Tabel Aturan base -->
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Aturan</th>
+                            <th>Persen</th>
+                            <th>Solusi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rulesTableBody">
+                        <!-- Tabel Aturan base -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="checkSymptoms" class="section">
