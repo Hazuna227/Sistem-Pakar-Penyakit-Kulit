@@ -55,21 +55,127 @@ const diagnoses = [
 ];
 
 //Aturan (Rules)
+// Inisialisasi aturan (Rules)
 const rules = [
-    { gejala: ['G01', 'G02', 'G03'], penyakit: ['P01'] }, //rule 1
-    { gejala: ['G04', 'G05', 'G06'], penyakit: ['P02'] }, //rule 2
-    { gejala: ['G07', 'G08', 'G09', 'G10', 'G11'], penyakit: ['P03'] }, //rule3
-    { gejala: ['G12', 'G13', 'G14', 'G15', 'G16'], penyakit: ['P04'] }, //rule 4
-    { gejala: ['G17', 'G18', 'G19'], penyakit: ['P05'] }, //rule 5
-    { gejala: ['G07', 'G20', 'G21', 'G22', 'G23'], penyakit: ['P06'] }, //rule 6
-    { gejala: ['G24', 'G25', 'G26', 'G27'], penyakit: ['P07'] }, //rule 7
-    { gejala: ['G28', 'G29', 'G30'], penyakit: ['P08'] }, //rule 8
-    { gejala: ['G31', 'G32', 'G33', 'G34'], penyakit: ['P09'] }, //rule 9
-    { gejala: ['G01', 'G35', 'G36', 'G37', 'G38'], penyakit: ['P01'] } //rule 10
+    { gejala: ['G01'], penyakit:'Psioriasis', persen: '20%'},
+    { gejala: ['G02'], penyakit: 'Psioriasis', persen: '20%'},
+    { gejala: ['G03'], penyakit: 'Psioriasis', persen: '20%'},
+    { gejala: ['G01', 'G02'], penyakit: 'Psioriasis', persen: '20%'},
+    { gejala: ['G02', 'G03'], penyakit: 'Psioriasis', persen: '20%'},
+    { gejala: ['G01', 'G03'], penyakit: 'Psioriasis', persen: '20%'},
+    { gejala: ['G01', 'G02', 'G03'], penyakit: 'Psioriasis', persen: '20%'},
+ 
+    { gejala: ['G04'], penyakit: 'Veruca', persen: '25%'},
+    { gejala: ['G05'], penyakit: 'Veruca', persen: '25%'},
+    { gejala: ['G06'], penyakit: 'Veruca', persen: '25%'},
+    { gejala: ['G04', 'G05'], penyakit: 'Veruca', persen: '25%'},
+    { gejala: ['G05', 'G06'], penyakit: 'Veruca', persen: '25%'},
+    { gejala: ['G04', 'G06'], penyakit: 'Veruca', persen: '25%'},
+    { gejala: ['G04', 'G05', 'G06'], penyakit: 'Veruca', persen: '25%'},
+
+
+    { gejala: ['G07'], penyakit: 'Varicella', persen: '20%'},
+    { gejala: ['G10'], penyakit: 'Varicella', persen: '20%'},
+    { gejala: ['G11'], penyakit: 'Varicella', persen: '20%'},
+    { gejala: ['G07', 'G10'], penyakit: 'Varicella', persen: '20%'},
+    { gejala: ['G10', 'G11'], penyakit: 'Varicella', persen: '20%'},
+    { gejala: ['G07', 'G11'], penyakit: 'Varicella', persen: '20%'},
+    { gejala: ['G07', 'G10', 'G11'], penyakit: 'Varicella', persen: '20%'},
+
+    { gejala: ['G12'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G13'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G14'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G15'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G16'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G12', 'G13'], penyakit: 'Eksim', persen: '25%'},
+    { gejala: ['G13', 'G14'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G14', 'G15'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G15', 'G16'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G12', 'G14'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G13', 'G15'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G12', 'G13', 'G14'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G13', 'G14', 'G15'], penyakit: 'Eksim', persen: '15%'},
+    { gejala: ['G14', 'G15', 'G16'], penyakit: 'Eksim', persen: '15%'},
+
+    { gejala: ['G17'], penyakit: 'Vitiligo', persen: '25%'},
+    { gejala: ['G18'], penyakit: 'Vitiligo', persen: '25%'},
+    { gejala: ['G19'], penyakit: 'Vitiligo', persen: '25%'},
+    { gejala: ['G17', 'G18'], penyakit: 'Vitiligo', persen: '25%'},
+    { gejala: ['G18', 'G19'], penyakit: 'Vitiligo', persen: '25%'},
+    { gejala: ['G17', 'G19'], penyakit: 'Vitiligo', persen: '25%'},
+    { gejala: ['G17', 'G18', 'G19'], penyakit: 'Vitiligo', persen: '25%'},
+
+    { gejala: ['G07'], penyakit: 'Herpes', persen: '20%'}, 
+    { gejala: ['G22'], penyakit: 'Herpes', persen: '20%'},
+    { gejala: ['G23'], penyakit: 'Herpes', persen: '20%'},
+    { gejala: ['G07', 'G22'], penyakit: 'Herpes', persen: '20%'},
+    { gejala: ['G22', 'G23'], penyakit: 'Herpes', persen: '20%'},
+    { gejala: ['G07', 'G23'], penyakit: 'Herpes', persen: '20%'},
+    { gejala: ['G07', 'G22', 'G23'], penyakit: 'Herpes', persen: '20%'},
+
+    { gejala: ['G24'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G25'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G26'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G27'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G24', 'G25'], penyakit: 'Kusta', persen: '20%'},
+    { gejala: ['G26', 'G27'], penyakit: 'Kusta', persen: '20%'},
+    { gejala: ['G24', 'G26'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G25', 'G27'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G24', 'G27'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G25', 'G26'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G24', 'G25', 'G26'], penyakit: 'Kusta', persen: '15%'},
+    { gejala: ['G25', 'G26', 'G27'], penyakit: 'Kusta', persen: '15%'},
+
+
+    { gejala: ['G28'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+    { gejala: ['G29'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+    { gejala: ['G30'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+    { gejala: ['G28', 'G29'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+    { gejala: ['G29', 'G30'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+    { gejala: ['G28', 'G30'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+    { gejala: ['G28', 'G29', 'G30'], penyakit: 'Infeksi Jamur Kandida', persen: '20%'},
+
+
+    { gejala: ['G31'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G32'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G33'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G34'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G32', 'G33'], penyakit: 'Scabies', persen: '20%'},
+    { gejala: ['G33', 'G34'], penyakit: 'Scabies', persen: '20%'},
+    { gejala: ['G31', 'G32'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G31', 'G33'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G31', 'G34'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G32', 'G34'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G31', 'G32', 'G33'], penyakit: 'Scabies', persen: '15%'},
+    { gejala: ['G32', 'G33', 'G34'], penyakit: 'Scabies', persen: '15%'},
+
+
+    { gejala: ['G35'], penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G36'], penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G37'], penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G35', 'G36'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G36', 'G37'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G37', 'G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'}
+
 ];
 
+// Solusi untuk setiap penyakit
+const solutions = {
+    'Psioriasis': ['Gunakan pelembab secara teratur', 'Hindari faktor pemicu seperti stres dan cuaca ekstrem', 'Gunakan krim kortikosteroid topikal sesuai resep dokter', 'Pertimbangkan fototerapi di bawah pengawasan medis', 'Jaga pola makan sehat dan hindari alkohol'],
+    'Veruca': ['Gunakan obat-obatan over-the-counter yang mengandung asam salisilat', 'Cryotherapy (pembekuan) oleh dokter', 'Hindari berbagi barang pribadi seperti handuk', 'Jaga kebersihan kaki dan tangan', 'Gunakan alas kaki di area umum yang lembab'],
+    'Varicella': ['Istirahat yang cukup','Gunakan lotion calamine untuk mengurangi gatal','Minum banyak cairan','Gunakan pakaian longgar dan lembut','Konsumsi obat antihistamin sesuai anjuran dokter untuk mengurangi gatal'],
+    'Eksim': ['Gunakan pelembab hipoalergenik secara teratur','Hindari bahan iritan dan alergen','Gunakan sabun lembut dan air hangat saat mandi','Aplikasikan krim kortikosteroid sesuai resep dokter','Jaga suhu dan kelembaban ruangan'],
+    'Vitiligo': ['Gunakan tabir surya dengan SPF tinggi','Pertimbangkan terapi repigmentasi seperti fototerapi','Konsultasikan tentang krim imunomodulator dengan dokter','Pertimbangkan makeup kamuflase medis','Bergabung dengan grup dukungan untuk dukungan emosional'],
+    'Herpes': ['Gunakan obat antivirus oral atau topikal sesuai resep','Hindari menyentuh atau menggaruk lesi','Jaga kebersihan area yang terkena','Hindari pemicu seperti stres atau paparan sinar matahari berlebih','Gunakan kompres dingin untuk meredakan gejala'],
+    'Kusta': ['Ikuti rejimen antibiotik yang diresepkan dokter','Pemeriksaan rutin untuk memantau perkembangan penyakit','Perawatan luka dan pencegahan cedera pada area yang mati rasa','Terapi fisik dan okupasi jika diperlukan','Dukungan psikososial'],
+    'Infeksi Jamur Kandida': ['Gunakan obat antijamur topikal atau oral sesuai resep','Jaga area yang terkena tetap kering dan bersih','Gunakan pakaian longgar dan bahan yang menyerap keringat','Hindari makanan tinggi gula dan ragi','Pertimbangkan probiotik untuk menjaga keseimbangan mikrobioma'],
+    'Scabies': ['Gunakan lotion atau krim permethrin sesuai resep','Cuci semua pakaian, sprei, dan handuk dengan air panas','Isolasi barang-barang yang tidak bisa dicuci dalam kantong plastik selama beberapa hari','Beritahu kontak dekat untuk mendapatkan pengobatan juga','Hindari kontak kulit langsung dengan orang lain sampai pengobatan selesai'],
+    'Serkarial Dermatitis': ['Hindari berenang di air yang tercemar parasit', 'Gunakan krim kortikosteroid topikal untuk mengurangi peradangan','Aplikasikan kompres dingin untuk meredakan gatal','Gunakan antihistamin oral untuk mengurangi gatal','Jaga kebersihan kulit dan gunakan sabun antibakteri ringan'],
 
-function toggleSection(sectionId) {
+};
+
+    function toggleSection(sectionId) {
     // Mengambil semua elemen dengan kelas 'section'
     const sections = document.querySelectorAll('.section');
     // Menghapus kelas 'show' dari semua elemen 'section'
@@ -140,14 +246,17 @@ function showDiagnoses() {
 
 // Menampilkan data aturan pada tabel aturan
 function showRules() {
-    clearDataSummary(); // Menghapus konten ringkasan sebelum menambahkan yang baru
     const tableBody = document.getElementById('rulesTableBody');
     tableBody.innerHTML = '';
+    
     // Menampilkan tabel untuk data aturan
     rules.forEach((rule, index) => {
         const gejalaStr = rule.gejala.join(' AND ');
-        const penyakitStr = rule.penyakit.join(' OR ');
-        const row = `<tr><td>${index + 1}</td><td>IF (${gejalaStr}) THEN (${penyakitStr})</td></tr>`;
+        const penyakitStr = rule.penyakit;
+        const persenStr = rule.persen;
+        const solusiList = solutions[rule.penyakit] || [];
+        const solusiStr = solusiList.map(solusi => `<li>${solusi}</li>`).join('');
+        const row = `<tr><td>${index + 1}</td><td>IF (${gejalaStr}) THEN (${penyakitStr})</td><td>${persenStr}</td><td><ul>${solusiStr}</ul></td></tr>`;
         tableBody.innerHTML += row;
     });
 }
@@ -187,39 +296,48 @@ document.getElementById('symptomForm').addEventListener('submit', function(event
         return;
     }
 
-    // Menyimpan penyakit yang sesuai dengan gejala yang dipilih
-    const matchedDiagnoses = [];
+    // Menyimpan informasi diagnosa yang sesuai dengan gejala yang dipilih
+    const matchedDiagnoses = {};
     rules.forEach(rule => {
         if (rule.gejala.every(g => selectedSymptoms.includes(g))) {
-            rule.penyakit.forEach(k => {
-                if (!matchedDiagnoses.includes(k)) {
-                    matchedDiagnoses.push(k);
-                }
-            });
+            if (!matchedDiagnoses[rule.penyakit]) {
+                matchedDiagnoses[rule.penyakit] = {
+                    penyakit: rule.penyakit,
+                    persen: rule.persen,
+                    solusi: solutions[rule.penyakit]
+                };
+            }
         }
     });
 
-    // Menampilkan hasil diagnosis
-    displayResult(matchedDiagnoses);
+    // Menampilkan hasil diagnosa
+    displayResult(Object.values(matchedDiagnoses));
 });
 
-// Menampilkan hasil diagnosis pada container hasil
+// Menampilkan hasil diagnosa pada container hasil
 function displayResult(matchedDiagnoses) {
     const resultContainer = document.getElementById('resultContainer');
     resultContainer.innerHTML = '';
     
-    // Jika ada diagnosis yang cocok, tampilkan nama penyakitnya
+    // Jika ada diagnosa yang cocok, tampilkan informasi penyakit, persen, dan solusi
     if (matchedDiagnoses.length > 0) {
-        resultContainer.innerHTML = '<h3> Nama penyakit yang mungkin diderita:</h3>';
-        matchedDiagnoses.forEach(k => {
-            const diagnosis = diagnoses.find(d => d.kode === k);
-            if (diagnosis) {
-                resultContainer.innerHTML += `<p>${diagnosis.kode}: ${diagnosis.penyakit}</p>`;
-            }
+        resultContainer.innerHTML = '<h3> Hasil Diagnosa:</h3>';
+        matchedDiagnoses.forEach(diagnosa => {
+            resultContainer.innerHTML += `
+                <div>
+                    <p>Nama Penyakit: ${diagnosa.penyakit}</p>
+                    <p>Persen Kepastian: ${diagnosa.persen}</p>
+                    <ul>Solusi:
+                        ${diagnosa.solusi.map(solusi => `<li>${solusi}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
         });
     } else {
         // Jika tidak ada yang cocok, beri pesan bahwa tidak ada data yang terkait
         resultContainer.innerHTML = '<p>Tidak ada data yang terkait, silahkan pilih gejala yang lain.</p>';
     }
 }
+
+
 
