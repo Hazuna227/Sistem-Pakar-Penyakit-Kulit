@@ -2,7 +2,7 @@
 const symptoms = [
     { kode: 'G01', gejala: 'Bercak kemerahan pada kulit' },
     { kode: 'G02', gejala: 'Adanya plaque (lesi kulit yang permukaannya meninggi dan atasnya rata)' },
-    { kode: 'G03', gejala: 'Komputer sering restart sendiri' },
+    { kode: 'G03', gejala: 'Timbul gejala koebner phemenon' },
     { kode: 'G04', gejala: 'Adanya papula kecil seukuran kepala jarum' },
     { kode: 'G05', gejala: 'Papula tumbuh menonjol' },
     { kode: 'G06', gejala: 'Permukaan kulit menjadi lebih gelap dan hiperkeratosis' },
@@ -51,7 +51,8 @@ const diagnoses = [
     { kode: 'P06', penyakit: 'Herpes' },
     { kode: 'P07', penyakit: 'Kusta' },
     { kode: 'P08', penyakit: 'Infeksi Jamur Kandida' },
-    { kode: 'P09', penyakit: 'Scabies' }
+    { kode: 'P09', penyakit: 'Scabies' },
+    { kode: 'P10', penyakit: 'Serkarial Dermatitis' }
 ];
 
 //Aturan (Rules)
@@ -72,7 +73,6 @@ const rules = [
     { gejala: ['G05', 'G06'], penyakit: 'Veruca', persen: '25%'},
     { gejala: ['G04', 'G06'], penyakit: 'Veruca', persen: '25%'},
     { gejala: ['G04', 'G05', 'G06'], penyakit: 'Veruca', persen: '25%'},
-
 
     { gejala: ['G07'], penyakit: 'Varicella', persen: '20%'},
     { gejala: ['G10'], penyakit: 'Varicella', persen: '20%'},
@@ -156,8 +156,12 @@ const rules = [
     { gejala: ['G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
     { gejala: ['G35', 'G36'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
     { gejala: ['G36', 'G37'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
-    { gejala: ['G37', 'G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'}
-
+    { gejala: ['G37', 'G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G35', 'G37'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G35', 'G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G36', 'G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G35', 'G36', 'G37'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
+    { gejala: ['G36', 'G37', 'G38'],  penyakit: 'Serkarial Dermatitis', persen: '20%'},
 ];
 
 // Solusi untuk setiap penyakit
