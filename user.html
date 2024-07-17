@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Pakar Diagnosa Penyakit Kulit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Penyakit Kulit</title>
+</head>
 <style>
-body {
+    body {
     font-family: 'Arial, sans-serif';
     margin: 0;
     padding: 0;
@@ -135,7 +136,7 @@ button[type="submit"]:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: background-color 0.3s;
-    white-space: nowrap; /* Supaya tidak wrap jika teks panjang */
+    white-space: wrap; /* Supaya tidak wrap jika teks panjang */
     margin-bottom: 5px; /* Jarak antara setiap checkbox */
 }
 
@@ -182,18 +183,24 @@ button[type="submit"]:hover {
     body {
     flex-direction: column;
     }
-    body {
-        flex-direction: column;
-    }
     nav ul {
         display: flex;
+        flex-direction: row;
         overflow-x: auto;
         white-space: nowrap;
+        justify-content: flex-start;
     }
+
     nav ul li {
         display: inline-block;
         margin-right: 10px;
     }
+
+    nav ul li a {
+        padding: 10px;
+        white-space: nowrap;
+    }
+
     nav ul::-webkit-scrollbar {
         display: none; /* Sembunyikan scrollbar di Chrome, Safari, dan Opera */
     }
@@ -201,122 +208,81 @@ button[type="submit"]:hover {
         -ms-overflow-style: none; /* Sembunyikan scrollbar di IE dan Edge */
         scrollbar-width: none;
     }
+    
+    nav {
+        width: 100%;
+        height: auto;
+        order: 1;
+    }
+
+    .content {
+        padding-top: 30px; /* Sesuaikan padding agar konten tidak tertutup oleh navbar */
+    }
+
+    #checkboxes {
+        display: flex;
+        flex-direction: column;
+        max-width:400px;
+        max-height: 400px; /* Maksimum tinggi konten agar masih bisa di-scroll */
+        overflow-x: auto; /* Tambahkan scrollbar jika konten melebihi tinggi maksimum */
+        padding: 10px;
+        margin-bottom: 10px; /* Jarak antara elemen di bawahnya */
+    }
+
+    #checkboxes label {
+        display: block;
+        padding: 10px;
+        cursor: pointer;
+        margin-bottom: 5px; /* Jarak antara setiap checkbox */
+    }
 }
 
 @media (max-width: 480px) {
     nav ul {
         flex-wrap: nowrap;
-    }
-    #checkboxes {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    #checkboxes label {
-        flex: 1 1 calc(50% - 10px);
-        padding: 10px;
-        background-color: #ffffff;
-        border: 1px solid #dddddd;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        cursor: pointer;
-        text-align: center;
-    }
+    }  
 }
-    </style>
-</head>
+</style>
 <body>
     <nav>
         <ul>
             <li><a href="#" onclick="toggleSection('home')">Beranda</a></li>
             <li><a href="#" onclick="toggleSection('about')">Tentang</a></li>
-            <li><a href="#" onclick="toggleSection('symptoms')">Tabel Gejala</a></li>
-            <li><a href="#" onclick="toggleSection('diagnoses')">Tabel Penyakit</a></li>
-            <li><a href="#" onclick="toggleSection('rules')">Aturan</a></li>
             <li><a href="#" onclick="toggleSection('checkSymptoms')">Diagnosa</a></li>
-            <li><a href="index.html" >Keluar</a></li>
+            <li><a href="index.html" >Log Out</a></li>
         </ul>
     </nav>
-
     <div class="content">
         <div id="home" class="section">
-            <h1>Sistem Pakar Diagnosa Penyakit Kulit</h1>
+            <h1>Selamat Datang Di Sistem Pakar</h1>
             <div class="data-summary" id="dataSummary">
                 <!-- Data Total -->
             </div>
         </div>
-
-        <div id="about" class="section">
-            <div class="about-box">
-                <h2>Tentang</h2>
-                <p>Tujuan dari website ini adalah menyediakan sumber informasi yang komprehensif dan mudah diakses mengenai berbagai jenis penyakit kulit, termasuk gejala, diagnosa, dan solusi yang relevan. Kami bertujuan untuk membantu pengguna dalam memahami dan mengelola kondisi kulit mereka dengan lebih baik.</p>
-                <h3>Nama Kelompok :</h3>
-                <ul>
-                    <li>Jesika (220509152)</li>
-                    <li>Laurina nini raga runting (220509154)</li>
-                    <li>Pransiska aprilia (220509159)</li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="symptoms" class="section">
-            <h2>Tabel Gejala</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Kode Gejala</th>
-                        <th>Nama Gejala</th>
-                    </tr>
-                </thead>
-                <tbody id="symptomsTableBody">
-                    <!-- Tabel Gejala muncul disini -->
-                </tbody>
-            </table>
-        </div>
-
-        <div id="diagnoses" class="section">
-            <h2>Tabel Penyakit</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Kode Penyakit</th>
-                        <th>Nama Penyakit</th>
-                    </tr>
-                </thead>
-                <tbody id="diagnosesTableBody">
-                    <!-- Tabel Kerusakan -->
-                </tbody>
-            </table>
-        </div>
-
-        <div id="rules" class="section">
-            <h2>Aturan (Rules)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Aturan</th>
-                    </tr>
-                </thead>
-                <tbody id="rulesTableBody">
-                    <!-- Tabel Aturan base -->
-                </tbody>
-            </table>
-        </div>
-
-        <div id="checkSymptoms" class="section">
-            <h2>Diagnosa</h2>
-            <form id="symptomForm">
-                <label for="selectedSymptoms">Silahkan Pilih Gejala:</label><br>
-                <div id="checkboxes"></div><br>
-                <button type="submit">Periksa</button>
-            </form>
-            <div id="resultContainer" style="margin-top: 20px;"></div>
+    <div id="about" class="section">
+        <div class="about-box">
+            <h2>Tentang</h2>
+            <p>Tujuan dari website ini adalah menyediakan sumber informasi yang komprehensif dan mudah diakses mengenai berbagai jenis penyakit kulit, termasuk gejala, diagnosa, dan solusi yang relevan. Kami bertujuan untuk membantu pengguna dalam memahami dan mengelola kondisi kulit mereka dengan lebih baik.</p>
+            <h3>Nama Kelompok :</h3>
+            <ul>
+                <li>Jesika (220509152)</li>
+                <li>Laurina nini raga runting (220509154)</li>
+                <li>Pransiska aprilia (220509159)</li>
+            </ul>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="checkSymptoms" class="section">
+        <h2>Diagnosa</h2>
+        <form id="symptomForm">
+            <label for="selectedSymptoms">Silahkan Pilih Gejala:</label><br>
+            <div id="checkboxes"></div><br>
+            <button type="submit">Periksa</button>
+        </form>
+        <div id="resultContainer" style="margin-top: 20px;"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -222,3 +222,4 @@ function displayResult(matchedDiagnoses) {
         resultContainer.innerHTML = '<p>Tidak ada data yang terkait, silahkan pilih gejala yang lain.</p>';
     }
 }
+
