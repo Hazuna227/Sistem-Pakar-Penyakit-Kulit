@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Pakar Diagnosa Penyakit Kulit</title>
+<style>
+body {
+    font-family: 'Arial, sans-serif';
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+nav {
+    width: 100%;
+    background-color: #16a085;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #1abc9c;
+}
+
+.content {
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin-top: 20px;
+    margin: 0 auto;
+}
+
+.section {
+    display: none;
+}
+
+.section.show {
+    display: block;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #16a085;
+    color: white;
+}
+
+.data-summary {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around; /* Mengatur posisi horizontal dengan jarak di antara kotak */
+}
+
+.data-summary .summary-box {
+    width: 200px; /* Lebar kotak total */
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0 10px; /* Jarak antara setiap kotak total */
+}
+
+.data-summary .summary-box h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333333;
+    text-align: center; /* Pusatkan teks di dalam kotak total */
+}
+
+button[type="submit"] {
+    background-color: #16a085;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button[type="submit"]:hover {
+    background-color: #1abc9c;
+}
+#checkboxes {
+    display: flex;
+    flex-direction: column; /* Mengatur agar elemen flex menjadi kolom */
+    max-height: 500px; /* Tentukan tinggi maksimum untuk scrollbar vertikal */
+    overflow-y: auto; /* Menambahkan scrollbar vertikal jika terlalu banyak */
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 10px; /* Untuk memisahkan dengan elemen di bawahnya */
+}
+
+#checkboxes label {
+    display: block; /* Mengubah display agar bisa diatur lebarnya */
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap; /* Supaya tidak wrap jika teks panjang */
+    margin-bottom: 5px; /* Jarak antara setiap checkbox */
+}
+
+#checkboxes label:hover {
+    background-color: #f0f0f0;
+}
+#resultContainer {
+    flex: 1; /* Mengisi ruang yang tersedia */
+    margin-left: 20px; /* Jarak kiri dari elemen di sebelahnya */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow-y: auto; /* Menambahkan scrollbar vertikal jika perlu */
+    max-height: 500px; /* Tinggi maksimum dengan scrollbar vertikal */
+}
+
+.about-box {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px; /* Jarak dengan elemen di bawahnya */
+    max-width: 800px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Posisi tengah di dalam kontainer */
+}
+
+.about-box h2 {
+    margin-top: 0; /* Menghapus margin atas dari judul */
+}
+
+.about-box ul {
+    padding-left: 20px; /* Indentasi untuk daftar */
+    margin-top: 10px; /* Jarak atas dari daftar */
+}
+
+.about-box ul li {
+    margin-bottom: 5px; /* Jarak antara setiap elemen daftar */
+}
+
+@media (max-width: 768px) {
+    body {
+    flex-direction: column;
+    }
+    body {
+        flex-direction: column;
+    }
+    nav ul {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    nav ul li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    nav ul::-webkit-scrollbar {
+        display: none; /* Sembunyikan scrollbar di Chrome, Safari, dan Opera */
+    }
+    nav ul {
+        -ms-overflow-style: none; /* Sembunyikan scrollbar di IE dan Edge */
+        scrollbar-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-wrap: nowrap;
+    }
+    #checkboxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    #checkboxes label {
+        flex: 1 1 calc(50% - 10px);
+        padding: 10px;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="toggleSection('home')">Beranda</a></li>
+            <li><a href="#" onclick="toggleSection('about')">Tentang</a></li>
+            <li><a href="#" onclick="toggleSection('symptoms')">Tabel Gejala</a></li>
+            <li><a href="#" onclick="toggleSection('diagnoses')">Tabel Penyakit</a></li>
+            <li><a href="#" onclick="toggleSection('rules')">Aturan</a></li>
+            <li><a href="#" onclick="toggleSection('checkSymptoms')">Diagnosa</a></li>
+            <li><a href="index.html" >Keluar</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div id="home" class="section">
+            <h1>Sistem Pakar Diagnosa Penyakit Kulit</h1>
+            <div class="data-summary" id="dataSummary">
+                <!-- Data Total -->
+            </div>
+        </div>
+
+        <div id="about" class="section">
+            <div class="about-box">
+                <h2>Tentang</h2>
+                <p>Tujuan dari website ini adalah menyediakan sumber informasi yang komprehensif dan mudah diakses mengenai berbagai jenis penyakit kulit, termasuk gejala, diagnosa, dan solusi yang relevan. Kami bertujuan untuk membantu pengguna dalam memahami dan mengelola kondisi kulit mereka dengan lebih baik.</p>
+                <h3>Nama Kelompok :</h3>
+                <ul>
+                    <li>Jesika (220509152)</li>
+                    <li>Laurina nini raga runting (220509154)</li>
+                    <li>Pransiska aprilia (220509159)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="symptoms" class="section">
+            <h2>Tabel Gejala</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Kode Gejala</th>
+                        <th>Nama Gejala</th>
+                    </tr>
+                </thead>
+                <tbody id="symptomsTableBody">
+                    <!-- Tabel Gejala muncul disini -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="diagnoses" class="section">
+            <h2>Tabel Penyakit</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Kode Penyakit</th>
+                        <th>Nama Penyakit</th>
+                    </tr>
+                </thead>
+                <tbody id="diagnosesTableBody">
+                    <!-- Tabel Kerusakan -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="rules" class="section">
+            <h2>Aturan (Rules)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Aturan</th>
+                    </tr>
+                </thead>
+                <tbody id="rulesTableBody">
+                    <!-- Tabel Aturan base -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="checkSymptoms" class="section">
+            <h2>Diagnosa</h2>
+            <form id="symptomForm">
+                <label for="selectedSymptoms">Silahkan Pilih Gejala:</label><br>
+                <div id="checkboxes"></div><br>
+                <button type="submit">Periksa</button>
+            </form>
+            <div id="resultContainer" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
